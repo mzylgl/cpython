@@ -1939,6 +1939,11 @@ long_to_decimal_string_internal(PyObject *aa,
 static PyObject *
 long_to_decimal_string(PyObject *aa)
 {
+
+    PyObject *str = PyUnicode_FromString("<GGG> I am always before int|long");
+    PyObject_Print(str, stdout, 0);
+    printf("\n");
+
     PyObject *v;
     if (long_to_decimal_string_internal(aa, &v, NULL, NULL, NULL) == -1)
         return NULL;
