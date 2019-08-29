@@ -324,6 +324,16 @@ convert_to_double(PyObject **v, double *dbl)
 static PyObject *
 float_repr(PyFloatObject *v)
 {
+    double t = 12.34;
+    if (PyFloat_AsDouble(v) == t) {
+        PyObject* str = PyUnicode_FromString("<GGG> i  in float_repr");
+        PyObject* out = PySys_GetObject("stdout");
+        if (out != NULL) {
+            PyObject_Print(str, stdout, 0);
+            printf("\n");
+        }
+    }
+
     PyObject *result;
     char *buf;
 
